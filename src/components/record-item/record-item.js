@@ -1,9 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+
+const Li = styled.li`
+  list-style-type: none;
+`;
+
 const RecordListItem = ({ thoughts, emotions }) => {
   return (
-    <li>
+    <Li>
       Мысли: {thoughts}, Чувства: {emotions}
-    </li>
+    </Li>
   );
 };
 export default RecordListItem;
