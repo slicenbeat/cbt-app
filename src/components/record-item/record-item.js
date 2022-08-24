@@ -1,5 +1,9 @@
 import React from "react";
-const RecordListItem = () => {
-  return <li>Элемент</li>;
+const RecordListItem = ({ thoughts, emotions }) => {
+  return (
+    <li>
+      Мысли: {thoughts}, Чувства: {emotions}
+    </li>
+  );
 };
 export default RecordListItem;
