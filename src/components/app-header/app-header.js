@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const AppHeaderWrapper = styled.header`
-  height: 120px;
+  height: 100px;
   background-color: #5e89c4;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,9 @@ const AppHeaderWrapper = styled.header`
 const AppHeader = () => {
   return (
     <AppHeaderWrapper>
-      <h1>CBT App</h1>
+      <h1>
+        <Link to="/record-list">CBT APP</Link>
+      </h1>
       <div>
         <Link to="/record-list">Записи</Link>
         <Link to="/record-add-form">Сделать запись</Link>

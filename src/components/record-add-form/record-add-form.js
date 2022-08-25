@@ -16,6 +16,7 @@ const RecordAddForm = () => {
       width: 200px;
       height: 50px;
       align-self: center;
+      border: 1px solid #919acc;
     }
   `;
   const Input = styled.input`
@@ -23,8 +24,16 @@ const RecordAddForm = () => {
     width: 600px;
     height: 50px;
     padding: 10px;
+    border: 1px solid #919acc;
     ::placeholder {
       text-align: center;
+    }
+    &:active {
+      border: 1px solid #919acc;
+    }
+    &:focus {
+      border: 1px solid #919acc;
+      outline: none;
     }
   `;
   return (
