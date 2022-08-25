@@ -1,16 +1,20 @@
 import React from "react";
 import AppHeader from "../app-header";
-import SearchPanel from "../search-panel";
 import RecordList from "../record-list";
+import { createGlobalStyle } from "styled-components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RecordAddForm from "../record-add-form";
 
-import styled from "styled-components";
-const AppBlock = styled.div`
+const AppBlock = createGlobalStyle`
+* {
+  background: #f6faff;
+  box-sizing: border-box;
   margin: 0;
-  max-width: 800px;
-  height: 300px;
-  border: 1px solid black;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
 `;
+
 const App = () => {
   const data = [
     { thoughts: "Он некрасивый", emotions: "Грусть", id: "123" },
@@ -18,12 +22,14 @@ const App = () => {
     { thoughts: "Я всего добьюсь", emotions: "Спокойствие", id: "421" },
   ];
   return (
-    <AppBlock>
+    <BrowserRouter>
       <AppHeader />
-      <SearchPanel />
-      <RecordList data={data} />
-      <RecordAddForm />
-    </AppBlock>
+      <Routes>
+        <Route path="/record-list" element={<RecordList data={data} />}></Route>
+        <Route path="/record-add-form" element={<RecordAddForm />}></Route>
+      </Routes>
+      <AppBlock />
+    </BrowserRouter>
   );
 };
 export default App;
