@@ -32,7 +32,7 @@ const AppHeader = () => {
     <AppHeaderWrapper>
       <h1>CBT App</h1>
       <div>
-        <Link to="/record-list">Дневник</Link>
+        <Link to="/record-list">Записи</Link>
         <Link to="/record-add-form">Сделать запись</Link>
       </div>
     </AppHeaderWrapper>
