@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const AppHeaderWrapper = styled.header`
-  height: 100px;
+  height: 600px;
   background-color: #5e89c4;
   display: flex;
   flex-direction: column;
@@ -27,15 +27,25 @@ const AppHeaderWrapper = styled.header`
   }
 `;
 
-const AppHeader = () => {
+
+
+const AppHeader = ({onChange}) => {
+
+  function enableFlex(){
+    onChange(true);
+  }
+  function disableFlex(){
+    onChange(false);
+  }
   return (
     <AppHeaderWrapper>
       <h1>
         <Link to="/record-list">CBT APP</Link>
       </h1>
       <div>
-        <Link to="/record-list">Записи</Link>
-        <Link to="/record-add-form">Сделать запись</Link>
+        <Link to="/record-list" onClick={disableFlex}>Записи</Link>
+        <Link to="/record-add-form" onClick={disableFlex}>Сделать запись</Link>
+        <Link to="/quote" onClick={enableFlex}>Вдохновиться</Link>
       </div>
     </AppHeaderWrapper>
   );
