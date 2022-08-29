@@ -4,6 +4,7 @@ import styled from "styled-components";
 const RecordAddForm = () => {
   const Form = styled.form`
     font-size: 20px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     p {

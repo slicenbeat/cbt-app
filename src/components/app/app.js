@@ -9,9 +9,7 @@ import Quote from "../quote";
 const Wrapper = styled.div`
   height: 100vh;
   ${(props) =>
-    props.quote
-      ? "display:flex; flex-direction: column;  "
-      : "display:block"};
+    props.quote ? "display:flex; flex-direction: column;  " : "display:block"};
 `;
 const GlobalStyle = createGlobalStyle`
   * {
