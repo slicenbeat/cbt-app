@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { fetchQuote } from "../../asyncActions/quote";
 const Quote = () => {
   const WrapperForQuote = styled.div`
   display: flex;
@@ -29,37 +29,18 @@ const Quote = () => {
     justify-content: center;
     height: 80%;
   `;
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [quote, setQuote] = useState([]);
-
-  useEffect(() => {
-    axios.get("https://api.quotable.io/random").then(
-      (result) => {
-        setIsLoaded(true);
-        setQuote(result.data);
-      },
-      (error) => {
-        setIsLoaded(true);
-        setError(error);
-      }
-    );
-  }, []);
-  if (error) {
-    return <div>Ошибка, ${error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Загрузка…</div>;
-  } else {
-    console.log(quote);
-    return (
-      <Wrapper>
-        <WrapperForQuote>
-          <blockquote>«{quote.content}»</blockquote>
-          <cite>{quote.author}</cite>
-        </WrapperForQuote>
-      </Wrapper>
-    );
-  }
+  const dispatch = useDispatch();
+  const quote = useSelector((state) => state.quote);
+  console.log(quote);
+  return (
+    <Wrapper>
+      <WrapperForQuote>
+        <blockquote>«{quote.content}»</blockquote>
+        <cite>{quote.author}</cite>
+      </WrapperForQuote>
+      <button onClick={() => dispatch(fetchQuote())}>Генерация цитаты</button>
+    </Wrapper>
+  );
 };
 
 export default Quote;

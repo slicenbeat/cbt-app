@@ -33,7 +33,6 @@ const App = () => {
 
   const handleStyleChange = (flag) => {
     setFlag(flag);
-    console.log(flag);
   };
 
   return (
