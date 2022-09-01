@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import RecordListItem from "../record-item";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRecords } from "../../asyncActions/records";
 const Ul = styled.ul`
   display: flex;
   justify-content: center;
@@ -9,8 +10,14 @@ const Ul = styled.ul`
   flex-direction: column;
 `;
 
-const RecordList = ({ data }) => {
-  const records = data.map((item) => {
+const RecordList = () => {
+  const dispatch = useDispatch();
+  const recordsNew = useSelector((state) => state.records.records);
+  useEffect(() => {
+    dispatch(fetchRecords());
+  }, []);
+  console.log(recordsNew);
+  const records = recordsNew.map((item) => {
     const { id, ...itemProps } = item;
     return <RecordListItem key={id} {...itemProps} />;
   });
