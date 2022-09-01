@@ -12,10 +12,10 @@ export const fetchRecords = () => {
       .then((response) => dispatch(getManyRecordsAction(response.data)));
   };
 };
-export const postRecord = () => {
+export const postRecord = (data) => {
   return function (dispatch) {
     axios
-      .post("http://localhost:3001/records")
+      .post("http://localhost:3001/records", data)
       .then((response) => dispatch(addRecordAction(response.data)));
   };
 };
