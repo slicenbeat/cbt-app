@@ -7,7 +7,7 @@ const defaultState = {
 export const recordReducer = (state = defaultState, action) => {
   switch (action.type) {
     case GET_MANY_RECORDS:
-      return { ...state, records: [...state.records, ...action.payload] };
+      return { ...state, records: [...action.payload] };
     case ADD_RECORD:
       return { ...state, records: [...state.records, action.payload] };
     case REMOVE_RECORD:

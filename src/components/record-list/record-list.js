@@ -15,7 +15,7 @@ const RecordList = () => {
   const recordsNew = useSelector((state) => state.records.records);
   useEffect(() => {
     dispatch(fetchRecords());
-  }, []);
+  }, [dispatch]);
   console.log(recordsNew);
   const records = recordsNew.map((item) => {
     const { id, ...itemProps } = item;
