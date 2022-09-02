@@ -4,6 +4,8 @@ import trash from "../../assets/icons/trash.svg";
 import edit from "../../assets/icons/edit.svg";
 import check from "../../assets/icons/check.svg";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editRecord, deleteRecord } from "../../asyncActions/records";
 const Li = styled.li`
   list-style-type: none;
 `;
@@ -58,7 +60,8 @@ const TextArea = styled.textarea`
     outline: none;
   }
 `;
-const RecordListItem = ({ thoughts, emotions }) => {
+const RecordListItem = ({ thoughts, emotions, id }) => {
+  const dispatch = useDispatch();
   const [isEditMode, setEditMode] = useState(false);
   const [editedThoughts, setEditedThoughts] = useState(thoughts);
   const [editedEmotions, setEditedEmotions] = useState(emotions);
@@ -100,6 +103,13 @@ const RecordListItem = ({ thoughts, emotions }) => {
               <button
                 onClick={() => {
                   setEditMode(!isEditMode);
+                  dispatch(
+                    editRecord({
+                      thoughts: editedThoughts,
+                      emotions: editedEmotions,
+                      id: id,
+                    })
+                  );
                 }}
               >
                 <img src={check} alt="Иконка для сохранения" />
@@ -117,7 +127,9 @@ const RecordListItem = ({ thoughts, emotions }) => {
           <ButtonBlock>
             <button
               onClick={() => {
-                console.log("Удалить");
+                if (window.confirm("Вы уверены, что хотите удалить запись?")) {
+                  dispatch(deleteRecord(id));
+                }
               }}
             >
               <img src={trash} alt="Иконка для удаления" />

@@ -16,10 +16,9 @@ const RecordList = () => {
   useEffect(() => {
     dispatch(fetchRecords());
   }, [dispatch]);
-  console.log(recordsNew);
   const records = recordsNew.map((item) => {
     const { id, ...itemProps } = item;
-    return <RecordListItem key={id} {...itemProps} />;
+    return <RecordListItem key={id} id={id} {...itemProps} />;
   });
   return <Ul>{records}</Ul>;
 };

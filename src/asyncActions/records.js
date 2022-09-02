@@ -19,11 +19,17 @@ export const postRecord = (data) => {
       .then((response) => dispatch(addRecordAction(response.data)));
   };
 };
-
-export const deleteRecord = (id) => {
+export const editRecord = (data) => {
   return function (dispatch) {
     axios
-      .delete(`http://localhost:3001/records/${id}`)
-      .then((response) => dispatch(removeRecordAction(response.data.id)));
+      .put(`http://localhost:3001/records/${data.id}`, data)
+      .then((response) => dispatch(editRecord(response.data)));
+  };
+};
+export const deleteRecord = (id) => {
+  return function (dispatch) {
+    axios.delete(`http://localhost:3001/records/${id}`).then((response) => {
+      dispatch(removeRecordAction(id));
+    });
   };
 };

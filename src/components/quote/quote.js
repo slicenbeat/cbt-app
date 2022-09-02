@@ -31,7 +31,6 @@ const Wrapper = styled.div`
 const Quote = () => {
   const dispatch = useDispatch();
   const quote = useSelector((state) => state.quote);
-  console.log(quote);
   return (
     <Wrapper>
       <WrapperForQuote>
