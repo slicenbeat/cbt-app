@@ -39,13 +39,13 @@ const AppHeader = ({ onChange }) => {
         <Link to="cbt-app/">CBT APP</Link>
       </h1>
       <div>
-        <Link to="cbt-app//record-list" onClick={disableFlex}>
+        <Link to="cbt-app/record-list" onClick={disableFlex}>
           Записи
         </Link>
-        <Link to="cbt-app//record-add-form" onClick={disableFlex}>
+        <Link to="cbt-app/record-add-form" onClick={disableFlex}>
           Сделать запись
         </Link>
-        <Link to="cbt-app//quote" onClick={enableFlex}>
+        <Link to="cbt-app/quote" onClick={enableFlex}>
           Вдохновиться
         </Link>
       </div>
