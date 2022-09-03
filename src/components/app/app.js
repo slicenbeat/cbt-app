@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AppHeader from "../app-header";
 import RecordList from "../record-list";
 import styled, { createGlobalStyle } from "styled-components";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import RecordAddForm from "../record-add-form";
 import Quote from "../quote";
 import About from "../about/";
@@ -32,21 +32,18 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Wrapper quote={flag}>
         <AppHeader onChange={handleStyleChange} />
         <Routes>
-          <Route path="cbt-app/" element={<About />}></Route>
-          <Route path="cbt-app/record-list" element={<RecordList />}></Route>
-          <Route
-            path="cbt-app/record-add-form"
-            element={<RecordAddForm />}
-          ></Route>
-          <Route path="cbt-app/quote" element={<Quote></Quote>}></Route>
+          <Route path="/" element={<About />}></Route>
+          <Route path="/record-list" element={<RecordList />}></Route>
+          <Route path="/record-add-form" element={<RecordAddForm />}></Route>
+          <Route path="/quote" element={<Quote></Quote>}></Route>
         </Routes>
         <GlobalStyle />
       </Wrapper>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 export default App;
