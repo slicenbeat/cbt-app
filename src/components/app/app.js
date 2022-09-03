@@ -36,10 +36,13 @@ const App = () => {
       <Wrapper quote={flag}>
         <AppHeader onChange={handleStyleChange} />
         <Routes>
-          <Route path="/" element={<About />}></Route>
-          <Route path="/record-list" element={<RecordList />}></Route>
-          <Route path="/record-add-form" element={<RecordAddForm />}></Route>
-          <Route path="/quote" element={<Quote></Quote>}></Route>
+          <Route path="cbt-app/" element={<About />}></Route>
+          <Route path="cbt-app/record-list" element={<RecordList />}></Route>
+          <Route
+            path="cbt-app/record-add-form"
+            element={<RecordAddForm />}
+          ></Route>
+          <Route path="cbt-app/quote" element={<Quote></Quote>}></Route>
         </Routes>
         <GlobalStyle />
       </Wrapper>
