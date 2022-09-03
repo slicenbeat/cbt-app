@@ -7,26 +7,36 @@ flex-direction: column;
 align-self: center;
 width: 600px;
 padding: 20px;
-background-color: #bcc4ef;
-border: 1px solid black;
+margin-bottom: 10px;
+background-color: #5e89c4;
+color: white;
+border-radius: 5px;
 font-size: 30px;
   blockquote {
     line-height: 1.5;
-    color: black;
-    background-color: #bcc4ef;
+    background-color: #5e89c4;
     margin-bottom: 20px;
   }
   cite {
-    background-color: #bcc4ef;
+    background-color: #5e89c4;
     align-self: center;
   }
 }
 `;
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 80%;
+`;
+const Button = styled.button`
+  width: 200px;
+  height: 50px;
+  background-color: #5e89c4;
+  color: white;
+  border: none;
+  border-radius: 5px;
 `;
 const Quote = () => {
   const dispatch = useDispatch();
@@ -37,7 +47,7 @@ const Quote = () => {
         <blockquote>«{quote.content}»</blockquote>
         <cite>{quote.author}</cite>
       </WrapperForQuote>
-      <button onClick={() => dispatch(fetchQuote())}>Генерация цитаты</button>
+      <Button onClick={() => dispatch(fetchQuote())}>Генерация цитаты</Button>
     </Wrapper>
   );
 };

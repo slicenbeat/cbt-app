@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const AppHeaderWrapper = styled.header`
-  height: 100px;
+  height: 18%;
   background-color: #5e89c4;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-bottom: 20px;
+  padding-bottom: 18px;
   div {
     background-color: #5e89c4;
     margin-left: 15px;

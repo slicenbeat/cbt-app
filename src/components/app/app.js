@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RecordAddForm from "../record-add-form";
 import Quote from "../quote";
+import About from "../about/";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -24,11 +25,6 @@ html {
 }
 `;
 const App = () => {
-  const data = [
-    { thoughts: "Он некрасивый", emotions: "Грусть", id: "123" },
-    { thoughts: "Я ничего не стою", emotions: "Злость", id: "312" },
-    { thoughts: "Я всего добьюсь", emotions: "Спокойствие", id: "421" },
-  ];
   const [flag, setFlag] = useState(false);
 
   const handleStyleChange = (flag) => {
@@ -40,10 +36,8 @@ const App = () => {
       <Wrapper quote={flag}>
         <AppHeader onChange={handleStyleChange} />
         <Routes>
-          <Route
-            path="/record-list"
-            element={<RecordList data={data} />}
-          ></Route>
+          <Route path="/" element={<About />}></Route>
+          <Route path="/record-list" element={<RecordList />}></Route>
           <Route path="/record-add-form" element={<RecordAddForm />}></Route>
           <Route path="/quote" element={<Quote></Quote>}></Route>
         </Routes>
