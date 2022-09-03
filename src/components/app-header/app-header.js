@@ -36,16 +36,16 @@ const AppHeader = ({ onChange }) => {
   return (
     <AppHeaderWrapper>
       <h1>
-        <Link to="/">CBT APP</Link>
+        <Link to="cbt-app/">CBT APP</Link>
       </h1>
       <div>
-        <Link to="/record-list" onClick={disableFlex}>
+        <Link to="cbt-app//record-list" onClick={disableFlex}>
           Записи
         </Link>
-        <Link to="/record-add-form" onClick={disableFlex}>
+        <Link to="cbt-app//record-add-form" onClick={disableFlex}>
           Сделать запись
         </Link>
-        <Link to="/quote" onClick={enableFlex}>
+        <Link to="cbt-app//quote" onClick={enableFlex}>
           Вдохновиться
         </Link>
       </div>
