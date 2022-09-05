@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 `;
 const GlobalStyle = createGlobalStyle`
   * {
-  background: #f6faff;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -22,6 +21,9 @@ const GlobalStyle = createGlobalStyle`
 }
 html {
   height: 100%;
+}
+body {
+  background: #f6faff;
 }
 `;
 const App = () => {

@@ -27,7 +27,6 @@ const TextBlock = styled.div``;
 const ButtonBlock = styled.div`
   align-self: center;
   margin-left: 5px;
-  background-color: transparent;
   img,
   button {
     background-color: transparent;
@@ -103,6 +102,7 @@ const RecordListItem = ({ thoughts, emotions, id }) => {
               <button
                 onClick={() => {
                   setEditMode(!isEditMode);
+                  console.log("Рендер");
                   dispatch(
                     editRecord({
                       thoughts: editedThoughts,
