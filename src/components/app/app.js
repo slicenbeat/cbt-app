@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AppHeader from "../app-header";
 import RecordList from "../record-list";
 import styled, { createGlobalStyle } from "styled-components";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import RecordAddForm from "../record-add-form";
 import Quote from "../quote";
 import About from "../about/";
@@ -34,18 +34,16 @@ const App = () => {
   };
 
   return (
-    <HashRouter>
-      <Wrapper quote={flag}>
-        <AppHeader onChange={handleStyleChange} />
-        <Routes>
-          <Route path="/" element={<About />}></Route>
-          <Route path="/record-list" element={<RecordList />}></Route>
-          <Route path="/record-add-form" element={<RecordAddForm />}></Route>
-          <Route path="/quote" element={<Quote></Quote>}></Route>
-        </Routes>
-        <GlobalStyle />
-      </Wrapper>
-    </HashRouter>
+    <Wrapper quote={flag}>
+      <AppHeader onChange={handleStyleChange} />
+      <Routes>
+        <Route path="/" element={<About />}></Route>
+        <Route path="/record-list" element={<RecordList />}></Route>
+        <Route path="/record-add-form" element={<RecordAddForm />}></Route>
+        <Route path="/quote" element={<Quote></Quote>}></Route>
+      </Routes>
+      <GlobalStyle />
+    </Wrapper>
   );
 };
 export default App;
