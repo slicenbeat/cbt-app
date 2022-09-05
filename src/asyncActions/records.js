@@ -28,7 +28,10 @@ export const postRecord = (data) => {
 export const editRecord = (data) => {
   return function (dispatch) {
     axios
-      .put(`http://localhost:3001/records/${data.id}`, data)
+      .put(
+        `https://my-json-server.typicode.com/slicenbeat/cbt-app-server/records/${data.id}`,
+        data
+      )
       .then((response) => dispatch(editRecordAction(response.data)));
   };
 };
