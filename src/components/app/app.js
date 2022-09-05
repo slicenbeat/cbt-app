@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 `;
 const GlobalStyle = createGlobalStyle`
   * {
-  background: #f6faff;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -22,6 +21,9 @@ const GlobalStyle = createGlobalStyle`
 }
 html {
   height: 100%;
+}
+body {
+  background: #f6faff;
 }
 `;
 const App = () => {
@@ -32,18 +34,20 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
-      <Wrapper quote={flag}>
-        <AppHeader onChange={handleStyleChange} />
-        <Routes>
-          <Route path="/" element={<About />}></Route>
-          <Route path="/record-list" element={<RecordList />}></Route>
-          <Route path="/record-add-form" element={<RecordAddForm />}></Route>
-          <Route path="/quote" element={<Quote></Quote>}></Route>
-        </Routes>
-        <GlobalStyle />
-      </Wrapper>
-    </BrowserRouter>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Wrapper quote={flag}>
+          <AppHeader onChange={handleStyleChange} />
+          <Routes>
+            <Route path="/" element={<About />}></Route>
+            <Route path="/record-list" element={<RecordList />}></Route>
+            <Route path="/record-add-form" element={<RecordAddForm />}></Route>
+            <Route path="/quote" element={<Quote></Quote>}></Route>
+          </Routes>
+          <GlobalStyle />
+        </Wrapper>
+      </BrowserRouter>
+    </React.StrictMode>
   );
 };
 export default App;

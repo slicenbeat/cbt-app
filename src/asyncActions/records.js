@@ -1,5 +1,6 @@
 import {
   addRecordAction,
+  editRecordAction,
   getManyRecordsAction,
   removeRecordAction,
 } from "../store/recordReducer";
@@ -23,7 +24,7 @@ export const editRecord = (data) => {
   return function (dispatch) {
     axios
       .put(`http://localhost:3001/records/${data.id}`, data)
-      .then((response) => dispatch(editRecord(response.data)));
+      .then((response) => dispatch(editRecordAction(response.data)));
   };
 };
 export const deleteRecord = (id) => {
