@@ -14,7 +14,7 @@ const RecordListBlock = styled.div`
   flex-direction: row;
   justify-content: space-between;
   border: 1px solid #919acc;
-  width: 800px;
+  width: 900px;
   padding: 20px;
   margin: 5px;
   background-color: #ffffff;
@@ -22,16 +22,22 @@ const RecordListBlock = styled.div`
     background-color: #ffffff;
     color: #3f3a3a;
   }
+  div > span {
+    font-size: 12px;
+    color: grey;
+  }
 `;
 const TextBlock = styled.div`
   display: flex;
   flex-direction: column;
   p {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
-  span {
-    self-align: flex-start;
-  }
+  p: has( > textarea), p: has( > input) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 `;
 const ButtonBlock = styled.div`
   align-self: center;
@@ -68,6 +74,9 @@ const TextArea = styled.textarea`
     outline: none;
   }
 `;
+const Input = styled(TextArea)`
+  max-height: 50px;
+`;
 const RecordListItem = ({
   thoughts,
   emotions,
@@ -75,6 +84,7 @@ const RecordListItem = ({
   physicality,
   rationalAnswer,
   id,
+  date,
 }) => {
   const dispatch = useDispatch();
   const [isEditMode, setEditMode] = useState(false);
@@ -84,7 +94,6 @@ const RecordListItem = ({
   const [editedPhysicality, setEditedPhysicality] = useState(physicality);
   const [editedRationalAnswer, setEditedRationalAnswer] =
     useState(rationalAnswer);
-
   return (
     <Li>
       <RecordListBlock>
@@ -118,7 +127,7 @@ const RecordListItem = ({
           <p>
             Эмоции:&nbsp;
             {isEditMode ? (
-              <input
+              <Input
                 type={"text"}
                 value={editedEmotions}
                 onChange={(e) => {
@@ -155,6 +164,7 @@ const RecordListItem = ({
               <span>{editedRationalAnswer}</span>
             )}
           </p>
+          <span>{date}</span>
         </TextBlock>
         <ButtonsBlock>
           <ButtonBlock>
@@ -162,7 +172,6 @@ const RecordListItem = ({
               <button
                 onClick={() => {
                   setEditMode(!isEditMode);
-                  console.log("Рендер");
                   dispatch(
                     editRecord({
                       situation: editedSituation,
@@ -171,6 +180,7 @@ const RecordListItem = ({
                       physicality: editedPhysicality,
                       rationalAnswer: editedRationalAnswer,
                       id: id,
+                      date: date,
                     })
                   );
                 }}

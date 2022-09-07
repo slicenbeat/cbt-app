@@ -16,8 +16,13 @@ const Form = styled.form`
   button {
     width: 200px;
     height: 50px;
+    border-radius: 10px;
     align-self: center;
     border: 1px solid #919acc;
+    background-color: white;
+    :hover {
+      border: 1px solid green;
+    }
   }
 `;
 const Input = styled.input`
@@ -72,7 +77,9 @@ const RecordAddForm = () => {
     if (!situation || !thoughts || !emotions || !rationalAnswer) {
       console.log("Ошибка при отправке. Не заполнены все поля!");
     } else {
-      dispatch(postRecord(record));
+      dispatch(
+        postRecord({ ...record, date: new Date().toISOString().slice(0, 10) })
+      );
       setRecord({
         situation: "",
         thoughts: "",
