@@ -23,6 +23,7 @@ const Form = styled.form`
     :hover {
       border: 1px solid green;
     }
+    margin-bottom: 10px;
   }
 `;
 const Input = styled.input`
