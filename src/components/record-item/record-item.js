@@ -23,7 +23,16 @@ const RecordListBlock = styled.div`
     color: #3f3a3a;
   }
 `;
-const TextBlock = styled.div``;
+const TextBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-bottom: 5px;
+  }
+  span {
+    self-align: flex-start;
+  }
+`;
 const ButtonBlock = styled.div`
   align-self: center;
   margin-left: 5px;
@@ -59,15 +68,40 @@ const TextArea = styled.textarea`
     outline: none;
   }
 `;
-const RecordListItem = ({ thoughts, emotions, id }) => {
+const RecordListItem = ({
+  thoughts,
+  emotions,
+  situation,
+  physicality,
+  rationalAnswer,
+  id,
+}) => {
   const dispatch = useDispatch();
   const [isEditMode, setEditMode] = useState(false);
+  const [editedSituation, setEditedSituation] = useState(situation);
   const [editedThoughts, setEditedThoughts] = useState(thoughts);
   const [editedEmotions, setEditedEmotions] = useState(emotions);
+  const [editedPhysicality, setEditedPhysicality] = useState(physicality);
+  const [editedRationalAnswer, setEditedRationalAnswer] =
+    useState(rationalAnswer);
+
   return (
     <Li>
       <RecordListBlock>
         <TextBlock>
+          <p>
+            Ситуация:&nbsp;
+            {isEditMode ? (
+              <TextArea
+                value={editedSituation}
+                onChange={(e) => {
+                  setEditedSituation(e.target.value);
+                }}
+              ></TextArea>
+            ) : (
+              <span>{editedSituation}</span>
+            )}
+          </p>
           <p>
             Мысли:&nbsp;
             {isEditMode ? (
@@ -95,6 +129,32 @@ const RecordListItem = ({ thoughts, emotions, id }) => {
               <span>{editedEmotions}</span>
             )}
           </p>
+          <p>
+            Реакция тела:&nbsp;
+            {isEditMode ? (
+              <TextArea
+                value={editedPhysicality}
+                onChange={(e) => {
+                  setEditedPhysicality(e.target.value);
+                }}
+              ></TextArea>
+            ) : (
+              <span>{editedPhysicality}</span>
+            )}
+          </p>
+          <p>
+            Рациональный ответ:&nbsp;
+            {isEditMode ? (
+              <TextArea
+                value={editedRationalAnswer}
+                onChange={(e) => {
+                  setEditedRationalAnswer(e.target.value);
+                }}
+              ></TextArea>
+            ) : (
+              <span>{editedRationalAnswer}</span>
+            )}
+          </p>
         </TextBlock>
         <ButtonsBlock>
           <ButtonBlock>
@@ -105,8 +165,11 @@ const RecordListItem = ({ thoughts, emotions, id }) => {
                   console.log("Рендер");
                   dispatch(
                     editRecord({
+                      situation: editedSituation,
                       thoughts: editedThoughts,
                       emotions: editedEmotions,
+                      physicality: editedPhysicality,
+                      rationalAnswer: editedRationalAnswer,
                       id: id,
                     })
                   );
