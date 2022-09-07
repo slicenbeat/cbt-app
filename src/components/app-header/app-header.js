@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const AppHeaderWrapper = styled.header`
-  height: 18%;
+  height: 110px;
   background-color: #5e89c4;
   display: flex;
   flex-direction: column;
